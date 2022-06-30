@@ -49,8 +49,13 @@ public class PacienteController {
 
     @PostMapping(params = "form")
     public ModelAndView save(@Valid @ModelAttribute("paciente") PacienteDTO paciente, BindingResult BindingResult) {
+        var cidadeDTO = cidadeService.findById(paciente.getCidadeId());
+        paciente.setCidade(cidadeDTO);
         if (BindingResult.hasErrors()) {
-            return new ModelAndView("paciente/form");
+            var listaCidades = cidadeService.getAll();
+            HashMap<String, Object> dados = new HashMap<>();
+            dados.put("listaCidades", listaCidades);
+            return new ModelAndView("paciente/form", dados);
         }
         service.save(paciente);
         return new ModelAndView("redirect:/paciente");
@@ -63,7 +68,7 @@ public class PacienteController {
         HashMap<String, Object> dados = new HashMap<>();
         dados.put("paciente", paciente);
         dados.put("listaCidades", listaCidades);
-        return new ModelAndView("paciente/form", dados);
+        return new ModelAndView("paciente/form", "paciente", paciente);
     }
 
     @GetMapping(path = "/delete/{id}")

@@ -22,4 +22,10 @@ public class CidadeServiceImpl implements CidadeService {
     public List<CidadeDTO> getAll() {
         return mapper.mapListCidade(repository.findAll());
     }
+
+    @Override
+    public CidadeDTO findById(long id) {
+        var cidade = repository.findById(id);
+        return mapper.mapCidade(cidade.get());
+    }
 }
