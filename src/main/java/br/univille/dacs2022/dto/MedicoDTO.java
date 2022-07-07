@@ -6,7 +6,6 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import br.univille.dacs2022.entity.Procedimento;
 
 public class MedicoDTO {
     private long id;
@@ -18,15 +17,17 @@ public class MedicoDTO {
     @Min(value = 1, message = "O valor do CRM deve ser maior que 1.")
     @Max(value = 9999, message = "O valor do CRM deve ser menor que 9999.")
     private String CRM;
-    private List<Procedimento> listaProcedimentos = 
+    private List<ProcedimentoDTO> listaProcedimentos = 
         new ArrayList<>();
+    private long procedimentoId;
 
-    public List<Procedimento> getListaProcedimentos() {
-        return listaProcedimentos;
+    public long getProcedimentoId() {
+        return procedimentoId;
     }
-    public void setListaProcedimentos(List<Procedimento> listaProcedimentos) {
-        this.listaProcedimentos = listaProcedimentos;
+    public void setProcedimentoId(long procedimentoId) {
+        this.procedimentoId = procedimentoId;
     }
+    
     public long getId() {
         return id;
     }
@@ -44,6 +45,12 @@ public class MedicoDTO {
     }
     public void setCRM(String cRM) {
         CRM = cRM;
+    }
+    public List<ProcedimentoDTO> getListaProcedimentos() {
+        return listaProcedimentos;
+    }
+    public void setListaProcedimentos(List<ProcedimentoDTO> listaProcedimentos) {
+        this.listaProcedimentos = listaProcedimentos;
     }
 
     
