@@ -52,7 +52,10 @@ public class MedicoController {
     @PostMapping(params="save")
     public ModelAndView save(@Valid @ModelAttribute ("medico") MedicoDTO medico, BindingResult BindingResult) {
         if(BindingResult.hasErrors()){
-            return new ModelAndView("medico/form");
+            var listaProcedimentos = procedimentoService.getAll();
+            HashMap<String, Object> dados = new HashMap<>();
+            dados.put("listaProcedimentos",listaProcedimentos);
+            return new ModelAndView("medico/form", dados);
         }
         service.save(medico);
         return new ModelAndView("redirect:/medico");

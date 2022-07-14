@@ -57,10 +57,13 @@ public class PacienteController {
     public ModelAndView save(@Valid @ModelAttribute("paciente") PacienteDTO paciente, BindingResult BindingResult) {
         var cidadeDTO = cidadeService.findById(paciente.getCidadeId());
         paciente.setCidade(cidadeDTO);
+        
         if (BindingResult.hasErrors()) {
             var listaCidades = cidadeService.getAll();
+            var listaPlanos = planoService.getAll();
             HashMap<String, Object> dados = new HashMap<>();
             dados.put("listaCidades", listaCidades);
+            dados.put("listaPlanos", listaPlanos);
             return new ModelAndView("paciente/form", dados);
         }
         service.save(paciente);

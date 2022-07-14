@@ -55,7 +55,6 @@ public class ProcedimentoController {
     @GetMapping(path = "/delete/{id}")
     public ModelAndView delete(@PathVariable("id") long id) {
         service.delete(id);
-
         return new ModelAndView("redirect:/procedimento");
     }
 }

@@ -60,13 +60,11 @@
                 </div>
                 <div class="form-group">
                     <label>Plano de Saude:</label>
-                    <select th:field="*{planoId}"
-                        class="form-select">
+                    <select th:field="*{planoId}" class="form-select">
                         <option
                             th:each="umPlano : ${listaPlanos}"
                             th:value="${umPlano.id}"
                             th:text="${umPlano.nome}"></option>
-
                     </select>
                     <button type="submit" name="incplano" class="btn btn-primary">Incluir Plano</button>
                 </div>
