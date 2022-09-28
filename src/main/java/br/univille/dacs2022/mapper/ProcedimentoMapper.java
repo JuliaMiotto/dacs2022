@@ -5,7 +5,7 @@ import java.util.List;
 import org.mapstruct.Mapper;
 
 import br.univille.dacs2022.dto.ProcedimentoDTO;
-import br.univille.dacs2022.entity.Procedimento;
+import br.univille.coredacs2022.entity.Procedimento;
 
 @Mapper
 public interface ProcedimentoMapper {

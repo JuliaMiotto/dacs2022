@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import br.univille.dacs2022.dto.CidadeDTO;
 import br.univille.dacs2022.mapper.CidadeMapper;
-import br.univille.dacs2022.repository.CidadeRepository;
+import br.univille.coredacs2022.repository.CidadeRepository;
 import br.univille.dacs2022.service.CidadeService;
 
 @Service
